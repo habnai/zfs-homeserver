@@ -1,0 +1,5 @@
+---
+- name: Create folder for docker data
+  file:
+    path: "${DATADIR}"
+    state: directory
