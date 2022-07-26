@@ -22,7 +22,7 @@ adminuser: mainuser # should be an existing one from above
 
 shared_folders:
   - {name: 'Images', path: '/{{zfs.poolName}}/media/images'}
-  - {name: 'Music', path: '/{{zfs.poolName}}/media/music'}
+  - {name: 'movie', path: '/{{zfs.poolName}}/media/movie'}
   - {name: 'Shared folder', path: '/{{zfs.poolName}}/personal/all'}
   - {name: 'Shared Backup Folder', path: '/{{zfs.poolName}}/backup/all'}
 

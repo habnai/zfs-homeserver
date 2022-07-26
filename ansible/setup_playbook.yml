@@ -22,5 +22,3 @@
     - import_tasks: tasks/setupZFStask.yml
     - import_tasks: tasks/setupUsersTask.yml
     - import_tasks: tasks/setupSambaTask.yml
-    - import_tasks: tasks/setupDocker.yml
-    - import_tasks: tasks/setupDockerfolder.yml
