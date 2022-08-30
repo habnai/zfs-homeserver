@@ -1,7 +1,7 @@
 ---
 # all non secret vars
 zfs: {
-  poolName: dataPool,
+  poolName: DataPool,
   DISK1: '/dev/disk/by-id/scsi-123abc',
   DISK2: '/dev/disk/by-id/scsi-456def',
   DISK3: '/dev/disk/by-id/scsi-789ghi',
