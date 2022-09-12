@@ -8,7 +8,7 @@ zfs: {
   CACHEDISK: '/dev/disk/by-id/scsi-424242ababab',
   poolName2: dataPool2,
   DISK4: '/dev/disk/by-id/scsi-123abc',
-  DISK5s: '/dev/disk/by-id/scsi-456def',
+  DISK5: '/dev/disk/by-id/scsi-456def',
 }
 
 usergroups:
