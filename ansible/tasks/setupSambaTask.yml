@@ -3,6 +3,7 @@
   apt:
     name:
     - samba
+    - samba-common
     - samba-vfs-modules
     state: latest
     cache_valid_time: 3600
@@ -11,6 +12,10 @@
   ansible.builtin.service:
     name: smbd
     state: started
+
+- name: Create/update samba users
+  include_tasks: "smbusers.yml"
+  loop: "{{users}}"
 
 - name: Create/update samba users
   include_tasks: "smbusers.yml"
