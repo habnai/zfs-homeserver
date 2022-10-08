@@ -1,11 +1,8 @@
 ---
   - name: "Setting up the home server"
-    hosts: localhost
-    connection: local
-
-    # become root user, which is needed for most tasks
+    hosts: ansible
     become: yes
-    become_user: root
+    become_method: sudo
 
     vars_files:
         - vars/main_vars.yml

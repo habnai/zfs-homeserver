@@ -1,6 +1,6 @@
 
 # zfs-homeserver
-A full server for your home using ZFS, Docker &amp; Ansible for setup.
+A full server for your home using ZFS, files &amp; Ansible for setup.
 
 # Installation
 sudo apt install git ansible

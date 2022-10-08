@@ -7,7 +7,7 @@ MASTERPOOL="dataPool"
 BACKUPPOOLS=("backupPool" "backupPool2" "backupPool3" "backupPool4")
 
 # zfs file systems to backup
-BACKUPFILESYSTEMS=("docker" "personal" "backup" "media")
+BACKUPFILESYSTEMS=("files" "personal" "backup" "media")
 
 # pathes needed
 LOGFILE="/var/log/backup.log"
@@ -16,16 +16,16 @@ PRUNE="/usr/local/bin/zfs-prune-snapshots"
 
 # -------------- program, don't change ---------------
 
-for BACKUPPOOL in ${BACKUPPOOLS[@]}
+for BACKUPPOOL in "${BACKUPPOOLS[@]}"
 do
-        isOnline=$(/sbin/zpool status $BACKUPPOOL | grep -i 'state: ONLINE' | wc -l)
+        isOnline=$(/sbin/zpool status "$BACKUPPOOL" | grep -i 'state: ONLINE' | wc -l)
 
-        if [ $isOnline -ge 1 ]
+        if [ "$isOnline" -ge 1 ]
                 then
                         echo "$(date) - $BACKUPPOOL is online. Starting backup" >> $LOGFILE
 
                         # sync snapshots to backup pool
-                        for BACKUPSYS in ${BACKUPFILESYSTEMS[@]}
+                        for BACKUPSYS in "${BACKUPFILESYSTEMS[@]}"
                         do
                                 echo "$(date) - Starting backup of $MASTERPOOL/$BACKUPSYS to $BACKUPPOOL" >> $LOGFILE
                                 $SYNCOID $MASTERPOOL/$BACKUPSYS $BACKUPPOOL/backups/$BACKUPSYS --no-sync-snap >> $LOGFILE 2>&1

@@ -6,7 +6,7 @@ zfs: {
   DISK2: '/dev/disk/by-id/scsi-456def',
   DISK3: '/dev/disk/by-id/scsi-789ghi',
   CACHEDISK: '/dev/disk/by-id/scsi-424242ababab',
-  poolName2: dataPool2,
+  Vm-pool: Vm-pool,
   DISK4: '/dev/disk/by-id/scsi-123abc',
   DISK5: '/dev/disk/by-id/scsi-456def',
 }
@@ -26,6 +26,7 @@ adminuser: mainuser # should be an existing one from above
 shared_folders:
   - {name: 'Images', path: '/{{zfs.poolName}}/media/images'}
   - {name: 'movie', path: '/{{zfs.poolName}}/media/movie'}
+  - {name: 'files', path: '/{{zfs.poolName}}/files/files'}
   - {name: 'Shared folder', path: '/{{zfs.poolName}}/personal/all'}
   - {name: 'Shared Backup Folder', path: '/{{zfs.poolName}}/backup/all'}
 
