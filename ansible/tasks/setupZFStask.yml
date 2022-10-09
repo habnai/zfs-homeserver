@@ -17,6 +17,13 @@
   shell: 'zpool create -o ashift=12 {{zfs.poolName}} raidz {{zfs.DISK1}} {{zfs.DISK2}} {{zfs.DISK3}} cache {{zfs.CACHEDISK}}'
   when: 'not (ansible_zfs_pools|length > 0 and ansible_zfs_pools[0].name == zfs.poolName)'
 
+- debug: msg='ZFS pool {{ item.name }} exists? -> [{{ item.name == zfs.poolName2 }}] It has {{ item.free }} free space out of {{ item.size }}.'
+  with_items: '{{ ansible_zfs_pools }}'
+
+- name: Create zsh pool '{{zfs.poolName2}}' with 2 disks
+  shell: 'zpool create -o ashift=12 {{zfs.poolName2}} mirror {{zfs.DISK3}} {{zfs.DISK4}}'
+  when: 'not (ansible_zfs_pools|length > 0 and ansible_zfs_pools[0].name == zfs.poolName)'
+
 - name: Create file system for personal files
   zfs:
     name: '{{zfs.poolName}}/personal'

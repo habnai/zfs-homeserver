@@ -6,6 +6,9 @@ zfs: {
   DISK2: '/dev/disk/by-id/scsi-456def',
   DISK3: '/dev/disk/by-id/scsi-789ghi',
   CACHEDISK: '/dev/disk/by-id/scsi-424242ababab',
+  poolName2: VmPool,
+  DISK4: '/dev/disk/by-id/ata-VBOX_HARDDISK_VB0e606dac-ecbaef90',
+  DISK5: '/dev/disk/by-id/ata-VBOX_HARDDISK_VB0560a824-8f3254f9',
 }
 
 usergroups:
