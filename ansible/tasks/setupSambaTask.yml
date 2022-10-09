@@ -17,10 +17,6 @@
   include_tasks: "smbusers.yml"
   loop: "{{users}}"
 
-- name: Create/update samba users
-  include_tasks: "smbusers.yml"
-  loop: "{{users}}"
-
 - name: Configuring samba shares
   template:
     src: homeserver_smb.conf
