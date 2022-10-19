@@ -21,7 +21,7 @@
   with_items: '{{ ansible_zfs_pools }}'
 
 - name: Create zsh pool '{{zfs.poolName2}}' with 2 disks
-  shell: 'zpool create -o ashift=12 {{zfs.poolName2}} mirror {{zfs.DISK3}} {{zfs.DISK4}}'
+  shell: 'zpool create -o ashift=12 {{zfs.poolName2}} mirror {{zfs.DISK4}} {{zfs.DISK5}}'
   when: 'not (ansible_zfs_pools|length > 0 and ansible_zfs_pools[0].name == zfs.poolName)'
 
 - name: Create file system for personal files
