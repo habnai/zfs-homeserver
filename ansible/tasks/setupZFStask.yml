@@ -51,14 +51,27 @@
 
 - name: Create folder for docker data
   file:
-    path: "{{zfs.poolName}}/docker/data"
+    path: "{{docker.data_dir}}"
     state: directory
 
 - name: Create folder for docker config
   file:
-    path: "{{zfs.poolName}}/docker/config"
+    path: "{{docker.data_dir}}/config"
     state: directory
 
+- name: Create folder for traefik config
+  file:
+    path: "{{docker.data_dir}}/traefik"
+    state: directory
+
+- name: Create folder for docker data
+  file:
+    path: "{{docker.data_dir}}/traefik/config"
+    state: directory
+- name: Create folder for traefik data
+  file:
+    path: "{{docker.data_dir}}/traefik/acme"
+    state: directory
 # TODO check if already set
 - name: Enable auto snapshots for {{zfs.poolName}}
   shell: zfs set com.sun:auto-snapshot=true {{zfs.poolName}}
