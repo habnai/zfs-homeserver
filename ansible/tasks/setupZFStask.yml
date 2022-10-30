@@ -44,6 +44,21 @@
     name: '{{zfs.poolName}}/files'
     state: present
 
+- name: Create file system for docker data
+  zfs:
+    name: '{{zfs.poolName}}/docker'
+    state: present
+
+- name: Create folder for docker data
+  file:
+    path: "{{zfs.poolName}}/docker/data"
+    state: directory
+
+- name: Create folder for docker config
+  file:
+    path: "{{zfs.poolName}}/docker/config"
+    state: directory
+
 # TODO check if already set
 - name: Enable auto snapshots for {{zfs.poolName}}
   shell: zfs set com.sun:auto-snapshot=true {{zfs.poolName}}
@@ -79,3 +94,11 @@
     zfs set com.sun:auto-snapshot:daily=false {{zfs.poolName}}/files
     zfs set com.sun:auto-snapshot:hourly=false {{zfs.poolName}}/files
     zfs set com.sun:auto-snapshot:frequent=false {{zfs.poolName}}/files
+
+- name: Enable weekly snapshots for docker files
+  shell: |
+    zfs set com.sun:auto-snapshot:monthly=true {{zfs.poolName}}/docker
+    zfs set com.sun:auto-snapshot:weekly=true {{zfs.poolName}}/docker
+    zfs set com.sun:auto-snapshot:daily=false {{zfs.poolName}}/docker
+    zfs set com.sun:auto-snapshot:hourly=false {{zfs.poolName}}/docker
+    zfs set com.sun:auto-snapshot:frequent=false {{zfs.poolName}}/docker
