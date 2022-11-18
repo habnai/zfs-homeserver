@@ -4,10 +4,10 @@
 MASTERPOOL="dataPool"
 
 # Backup-Pools
-BACKUPPOOLS=("backupPool" "backupPool2" "backupPool3" "backupPool4")
+BACKUPPOOLS=("backupPool1" "backupPool2")
 
 # zfs file systems to backup
-BACKUPFILESYSTEMS=("files" "personal" "backup" "media")
+BACKUPFILESYSTEMS=("files" "personal" "backup" "docker" "media")
 
 # pathes needed
 LOGFILE="/var/log/backup.log"

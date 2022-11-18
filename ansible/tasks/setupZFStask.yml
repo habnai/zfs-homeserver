@@ -51,26 +51,26 @@
 
 - name: Create folder for docker data
   file:
-    path: "{{docker.data_dir}}"
+    path: "{{zfs.poolName}}/docker/data"
     state: directory
 
 - name: Create folder for docker config
   file:
-    path: "{{docker.data_dir}}/config"
+    path: "{{zfs.poolName}}/docker/config"
     state: directory
 
 - name: Create folder for traefik config
   file:
-    path: "{{docker.data_dir}}/traefik"
+    path: "{{zfs.poolName}}/docker/traefik"
     state: directory
 
 - name: Create folder for docker data
   file:
-    path: "{{docker.data_dir}}/traefik/config"
+    path: "{{zfs.poolName}}/docker/traefik/config"
     state: directory
 - name: Create folder for traefik data
   file:
-    path: "{{docker.data_dir}}/traefik/acme"
+    path: "{{zfs.poolName}}/docker/traefik/acme"
     state: directory
 # TODO check if already set
 - name: Enable auto snapshots for {{zfs.poolName}}
@@ -104,14 +104,14 @@
   shell: |
     zfs set com.sun:auto-snapshot:monthly=true {{zfs.poolName}}/files
     zfs set com.sun:auto-snapshot:weekly=true {{zfs.poolName}}/files
-    zfs set com.sun:auto-snapshot:daily=false {{zfs.poolName}}/files
-    zfs set com.sun:auto-snapshot:hourly=false {{zfs.poolName}}/files
-    zfs set com.sun:auto-snapshot:frequent=false {{zfs.poolName}}/files
+    zfs set com.sun:auto-snapshot:daily=true {{zfs.poolName}}/files
+    zfs set com.sun:auto-snapshot:hourly=true {{zfs.poolName}}/files
+    zfs set com.sun:auto-snapshot:frequent=true {{zfs.poolName}}/files
 
 - name: Enable weekly snapshots for docker files
   shell: |
     zfs set com.sun:auto-snapshot:monthly=true {{zfs.poolName}}/docker
     zfs set com.sun:auto-snapshot:weekly=true {{zfs.poolName}}/docker
-    zfs set com.sun:auto-snapshot:daily=false {{zfs.poolName}}/docker
-    zfs set com.sun:auto-snapshot:hourly=false {{zfs.poolName}}/docker
-    zfs set com.sun:auto-snapshot:frequent=false {{zfs.poolName}}/docker
+    zfs set com.sun:auto-snapshot:daily=true {{zfs.poolName}}/docker
+    zfs set com.sun:auto-snapshot:hourly=true {{zfs.poolName}}/docker
+    zfs set com.sun:auto-snapshot:frequent=true {{zfs.poolName}}/docker
