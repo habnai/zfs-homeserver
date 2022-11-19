@@ -44,34 +44,34 @@
     name: '{{zfs.poolName}}/files'
     state: present
 
-- name: Create file system for docker data
+- name: Create file system for docker
   zfs:
     name: '{{zfs.poolName}}/docker'
     state: present
 
-- name: Create folder for docker data
+- name: Create file system for docker data
   file:
     path: "{{zfs.poolName}}/docker/data"
-    state: directory
+    state: present
 
-- name: Create folder for docker config
+- name: Create  file system for docker config
   file:
     path: "{{zfs.poolName}}/docker/config"
-    state: directory
+    state: present
 
-- name: Create folder for traefik config
+- name: Create file system for traefik config
   file:
     path: "{{zfs.poolName}}/docker/traefik"
-    state: directory
+    state: present
 
-- name: Create folder for docker data
+- name: Create file system for docker data
   file:
     path: "{{zfs.poolName}}/docker/traefik/config"
-    state: directory
-- name: Create folder for traefik data
+    state: present
+- name: Create file system for traefik data
   file:
     path: "{{zfs.poolName}}/docker/traefik/acme"
-    state: directory
+    state: present
 # TODO check if already set
 - name: Enable auto snapshots for {{zfs.poolName}}
   shell: zfs set com.sun:auto-snapshot=true {{zfs.poolName}}
